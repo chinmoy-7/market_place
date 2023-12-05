@@ -46,7 +46,7 @@ export const Signup = () => {
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center py-12 sx:px-6 lg:px-8">
       <div className="sm:max-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Register to your account
+          Register your account
         </h2>
       </div>
       <div className="mt-8 sm:max-auto sm:w-full sm:max-w-md">
@@ -122,32 +122,6 @@ export const Signup = () => {
                   onClick={() => setVisible(true)}
                 />
               )} */}
-            </div>
-            <div className={`${styles.noramlFlex} justify-between`}>
-              <div className={`${styles.noramlFlex}`}>
-                <input
-                  type="checkbox"
-                  name="remember-me"
-                  id="remember-me"
-                  className="h-4 w-4 text-blue-600 focus:rin-blue-500 border-gray-500 rounded-sm"
-                />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm  text-gray-900"
-                >
-                  {" "}
-                  Remember me
-                </label>
-              </div>
-              <div className="text-sm">
-                {/* <input type="checkbox" name="remember-me" id="remember-me" className="h-4 w-4 text-blue-600 focus:rin-blue-500 border-gray-500 rounded-sm"/> */}
-                <a
-                  href=".forgot-password"
-                  className="text-blue-600 font-medium hover:text-blue-500"
-                >
-                  Forgot your password?
-                </a>
-              </div>
             </div>
             <div>
               <label
