@@ -28,7 +28,7 @@ export const Categories = () => {
             {categoriesData &&
               categoriesData.map((i, index) => {
                 const handleSubmit = (i) => {
-                  navigate(`/products?categories=${i.title}`);
+                  navigate(`/products?category=${i.title}`);
                   // window.location.reload()
                 };
                 return (

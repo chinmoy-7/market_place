@@ -229,13 +229,13 @@ export const navItems = [
       title: "Gifts",
       subTitle: "",
       image_Url:
-        "https://securecdn.pymnts.com/wp-content/uploads/2014/11/Gifts-Photo-700x489.jpg",
+        "https://img.etimg.com/thumb/width-1200,height-900,imgsize-12478,resizemode-75,msid-98156428/top-trending-products/gifts/12-unique-and-best-selling-birthday-gifts-under-rs-999.jpg",
     },
     {
       id: 7,
       title: "Pet Care",
       subTitle: "",
-      image_Url: "https://cdn.openpr.com/T/c/Tc15444071_g.jpg",
+      image_Url: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     },
     {
       id: 8,
@@ -271,11 +271,11 @@ export const navItems = [
       image_Url: [
         {
           public_id: "test",
-          url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+          url: "https://images.pexels.com/photos/249538/pexels-photo-249538.jpeg?cs=srgb&dl=pexels-john-tekeridis-249538.jpg&fm=jpg ",
         },
         {
           public_id: "test",
-          url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+          url: "https://images.pexels.com/photos/249538/pexels-photo-249538.jpeg?cs=srgb&dl=pexels-john-tekeridis-249538.jpg&fm=jpg ",
         },
       ],
       shop: {
@@ -331,7 +331,7 @@ export const navItems = [
       image_Url: [
         {
           public_id: "test",
-          url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+          url: "https://images.pexels.com/photos/249538/pexels-photo-249538.jpeg?cs=srgb&dl=pexels-john-tekeridis-249538.jpg&fm=jpg ",
         },
         {
           public_id: "test",
