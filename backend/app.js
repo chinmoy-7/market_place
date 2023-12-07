@@ -20,8 +20,10 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 //import routes
 const user = require("./controller/user")
+const shop = require("./controller/shop")
 
 app.use("/api/v2/user",user)
+app.use("/api/v2/shop",shop)
 
 
 if(process.env.NODE_ENV!="production"){

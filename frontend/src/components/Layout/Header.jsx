@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/style";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { categoriesData, productData } from "../../static/data";
 import {
   AiOutlineHeart,
@@ -20,6 +20,7 @@ import { RxCross1 } from "react-icons/rx";
 export const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   // console.log(isAuthenticated, user);
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
@@ -38,7 +39,6 @@ export const Header = ({ activeHeading }) => {
       );
     setSearchData(filteredProducts);
   };
-  console.log(searchData, "<[=[");
   window.addEventListener("scroll", () => {
     if (window.scrollY > 70) {
       setActive(true);
@@ -101,7 +101,7 @@ export const Header = ({ activeHeading }) => {
             </div>
             {/* Become seller */}
             <div className={`${styles.button}`}>
-              <Link to="/seller">
+              <Link to="/shop-create">
                 <h1 className="text-[#fff]  flex  items-center">
                   Become Seller <IoIosArrowForward className="ml-1" />
                 </h1>
@@ -147,7 +147,7 @@ export const Header = ({ activeHeading }) => {
               <div className={`${styles.noramlFlex}`}>
                 <div
                   className="relative cursor-pointer mr-[15px]"
-                  onClick={() => setOpenWishList(true)}
+                  onClick={() => {!isAuthenticated?navigate("/login"):setOpenWishList(true)}}
                 >
                   {/* Wish List icon */}
                   <AiOutlineHeart size={30} color="rgb(255 255 255 /83%)" />
@@ -160,7 +160,7 @@ export const Header = ({ activeHeading }) => {
               <div className={`${styles.noramlFlex}`}>
                 <div
                   className="relative cursor-pointer mr-[15px]"
-                  onClick={() => setOpenCart(true)}
+                  onClick={() => {!isAuthenticated?navigate("/login"):setOpenCart(true)}}
                 >
                   <AiOutlineShoppingCart
                     size={30}
@@ -291,7 +291,7 @@ export const Header = ({ activeHeading }) => {
                 {/* Body Options */}
                 <Navbar active={activeHeading} />
                 <div className={`${styles.button} ml-4 !rounded-[4px]`}>
-                  <Link to="/seller">
+                  <Link to="/shop-create">
                     <h1 className="text-[#fff]  flex  items-center ">
                       Become Seller <IoIosArrowForward className="ml-1" />
                     </h1>

@@ -1,69 +1,78 @@
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/style";
-import { RxAvatar } from "react-icons/rx";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
-export const Signup = () => {
+import { RxAvatar } from "react-icons/rx";
+export const ShopCreate = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [name, setName] = useState();
   const [visible, setVisible] = useState();
-  const [avatar, setAvatar] = useState(null);
-  const navigate = useNavigate()
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-    const config = {headers:{"Content-Type":"multipart/formdata"}}
-    const newForm = new FormData();
-    
-    newForm.append("file",avatar);
-    newForm.append("name",name)
-    newForm.append("email",email)
-    newForm.append("password",password)
-    // console.log(server)
-    axios.post(`${server}/user/create-user`,newForm,config).then((res)=>{
-      toast.success(res.data.message)
-      setEmail("")
-      setName("")
-      setPassword("")
-      setAvatar()
-    }).catch(err=>{
-      toast.error(err.response.data.message)
-      console.log(err.response.data.message)
-    })
-  };
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [address, setAddress] = useState("");
+  const [zipCode, setZipCode] = useState();
+  const [avatar, setAvatar] = useState();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const config = { headers: { "Content-Type": "multipart/formdata" } };
+    const newForm = new FormData();
+
+    newForm.append("file", avatar);
+    newForm.append("name", name);
+    newForm.append("email", email);
+    newForm.append("password", password);
+    newForm.append("zipCode", zipCode);
+    newForm.append("address", address);
+    newForm.append("phoneNumber", phoneNumber);
+    // console.log(server)
+    axios
+      .post(`${server}/shop/create-shop`, newForm, config)
+      .then((res) => {
+        setEmail("");
+        setName("");
+        setPassword("");
+        setAvatar("");
+        setZipCode(null);
+        setAddress("");
+        setPhoneNumber(null);
+        toast.success(res.data.message);
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  };
   const handleFileInputChange = (e) => {
+    // e.preventDefault();
     const file = e.target.files[0];
-    console.log(file)
     setAvatar(file);
   };
-
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center py-12 sx:px-6 lg:px-8">
       <div className="sm:max-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Register your account
+          Register as a seller
         </h2>
       </div>
-      <div className="mt-8 sm:max-auto sm:w-full sm:max-w-md">
+      <div className="mt-8 sm:max-auto sm:w-full sm:max-w-[35rem]">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="mt-1 ">
               <div>
                 <label
-                  htmlFor="name "
+                  htmlFor="email "
                   className="block text-sm text-gray-700 font-medium"
                 >
-                  Full Name
+                  Shop Name
                 </label>
               </div>
               <input
-                type="text"
+                type="name"
                 name="name"
-                autoComplete="name"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -77,7 +86,7 @@ export const Signup = () => {
                   htmlFor="email "
                   className="block text-sm text-gray-700 font-medium"
                 >
-                  Email Address
+                  Shop Email
                 </label>
               </div>
               <input
@@ -90,6 +99,67 @@ export const Signup = () => {
                 className=" appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500  focus:border-blue-500 text-sm"
               />
             </div>
+
+            <div className="mt-1 ">
+              <div>
+                <label
+                  htmlFor="email "
+                  className="block text-sm text-gray-700 font-medium"
+                >
+                  Shop Phone Number
+                </label>
+              </div>
+              <input
+                type="number"
+                name="phone-number"
+                // autoComplete="email"
+                required
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                className=" appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500  focus:border-blue-500 text-sm"
+              />
+            </div>
+
+            <div className="mt-1 ">
+              <div>
+                <label
+                  htmlFor="email "
+                  className="block text-sm text-gray-700 font-medium"
+                >
+                  Shop Zip Code
+                </label>
+              </div>
+              <input
+                type="number"
+                name="zip-code"
+                // autoComplete="email"
+                required
+                value={zipCode}
+                onChange={(e) => setZipCode(e.target.value)}
+                className=" appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500  focus:border-blue-500 text-sm"
+              />
+            </div>
+
+            <div className="mt-1 ">
+              <div>
+                <label
+                  htmlFor="email "
+                  className="block text-sm text-gray-700 font-medium"
+                >
+                  Shop Address
+                </label>
+              </div>
+              <input
+                type="address"
+                name="address"
+                // autoComplete="email"
+                required
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className=" appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500  focus:border-blue-500 text-sm"
+              />
+            </div>
+
             <div className="mt-1 relative">
               <div>
                 <label
@@ -108,19 +178,19 @@ export const Signup = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 className=" appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500  focus:border-blue-500 text-sm"
               />
-              {/* {visible ? (
+              {visible ? (
                 <AiOutlineEye
-                  className="absolute right-2 top-2 cursor-pointer"
+                  className="absolute right-2 top-6 cursor-pointer"
                   size={25}
                   onClick={() => setVisible(false)}
                 />
               ) : (
                 <AiOutlineEyeInvisible
-                  className="absolute right-2 top-2 cursor-pointer"
+                  className="absolute right-2 top-6 cursor-pointer"
                   size={25}
                   onClick={() => setVisible(true)}
                 />
-              )} */}
+              )}
             </div>
             <div>
               <label
@@ -145,14 +215,14 @@ export const Signup = () => {
                 >
                   <span>Upload a file</span>
                 </label>
-                  <input
-                    type="file"
-                    name="avatar"
-                    id="file-input"
-                    accept=".jpeg,.jpg,.png"
-                    className="sr-only"
-                    onChange={handleFileInputChange}
-                  />
+                <input
+                  type="file"
+                  name="avatar"
+                  id="file-input"
+                  accept=".jpeg,.jpg,.png"
+                  className="sr-only"
+                  onChange={handleFileInputChange}
+                />
               </div>
             </div>
             <div>
@@ -164,8 +234,8 @@ export const Signup = () => {
               </button>
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
-              <h4>Already have an account?</h4>
-              <Link to="/login" className="text-blue-600 pl-2">
+              <h4>Already Have an account?</h4>
+              <Link to="/shop-login" className="text-blue-600 pl-2">
                 Login
               </Link>
             </div>
