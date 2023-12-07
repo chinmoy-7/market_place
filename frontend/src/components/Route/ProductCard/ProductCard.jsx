@@ -4,7 +4,7 @@ import styles from "../../../styles/style";
 import { AiFillHeart, AiFillStar, AiOutlineEye, AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import {ProductDetailsCard} from '../ProductDetailsCard/ProductDetailsCard.jsx'
 
-export const ProductCard = ({ data }) => {
+export const ProductCard = ({ data,key }) => {
   const [click, setClick] = useState(false);
   const [open, setOpen] = useState(false);
 
